@@ -12,8 +12,8 @@ export const environment = {
     projectId: "payment-system-82a40",
     storageBucket: "payment-system-82a40.appspot.com",
     messagingSenderId: "26225464524",
-    appId: "1:26225464524:web:614599115716ee0312de69",
-    measurementId: "G-YKVYQT8WM8"
+    appId: "1:26225464524:web:51774a942f99e6f912de69",
+    measurementId: "G-4TD6SX1QQW"
   }
 };
 
