@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-   firebase: {
+  firebase: {
     apiKey: "AIzaSyBffsbGNlv-RuxdS8e1MT0e7y7tWlpICDY",
     authDomain: "payment-system-82a40.firebaseapp.com",
     databaseURL: "https://payment-system-82a40-default-rtdb.firebaseio.com",

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from "../../shared/services/auth.service";
 
 @Component({
   selector: 'app-verify-email',
@@ -12,7 +12,7 @@ export class VerifyEmailComponent implements OnInit {
     public authService: AuthService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

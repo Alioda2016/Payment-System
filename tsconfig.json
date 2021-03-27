@@ -10,16 +10,17 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
+    "module": "es2020",
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "module": "es2020",
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "strictPropertyInitialization": false
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
