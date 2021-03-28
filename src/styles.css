@@ -68,7 +68,7 @@ h6 {
   display: table;
   width: 100%;
   height: 100%;
-  background: #3F51B5;
+  background: #FBFBFB;
 }
 
 .displayTableCell {
@@ -87,7 +87,7 @@ h3 {
 .authBlock {
   margin: 0 auto;
   max-width: 400px;
-  background: white;
+  background: #8f98ff;
   padding: 30px 40px 10px;
   overflow: hidden;
   -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, .04);
@@ -144,7 +144,7 @@ input:-moz-placeholder {
   font-size: 16px;
   font-weight: 600;
   padding: 15px 0;
-  background: #15CD72;
+  background: #033FC4;
   color: #ffffff;
   cursor: pointer;
   outline: none;
@@ -170,14 +170,14 @@ input:-moz-placeholder {
 .or {
   text-align: center;
   display: block;
-  color: #a0a0a0;
-  background: white;
+  color: white;
+  background: #01C5E0;
   position: relative;
   margin: 5px 0 0px;
 }
 
 .orInner {
-  background: white;
+  background: #01C5E0;
   display: inline-block;
   z-index: 4;
   position: relative;
@@ -214,7 +214,7 @@ input:-moz-placeholder {
 }
 
 .forgotPassword span {
-  color: #3C89EF;
+  color: white;
   font-size: 14px;
   font-weight: 400;
   cursor: pointer;
@@ -228,12 +228,12 @@ input:-moz-placeholder {
   font-size: 14px;
   font-weight: 400;
   display: block;
-  color: rgba(255, 255, 255, .6);
+  color: rgba(2, 2, 2, 0.6);
 }
 
 .redirectToLogin .redirect {
   cursor: pointer;
-  color: #ffffff;
+  color: #023EC3;
   text-decoration: underline;
 }
 
@@ -656,7 +656,7 @@ body .table thead th {
   }
 
   .displayTable {
-    background: white
+    background: #025DCA
   }
 
   .authBlock {
@@ -665,5 +665,8 @@ body .table thead th {
 
   .px-logo {
     background: white;
+    background-color: white;
+    color: white;
   }
+
 }
