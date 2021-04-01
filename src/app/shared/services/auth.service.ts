@@ -122,4 +122,8 @@ export class AuthService {
     })
   }
 
+  showProfile(){
+    this.router.navigate(['dashboard/profile']);
+  }
+
 }

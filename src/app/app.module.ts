@@ -2,10 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 // Reactive Form
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 // App routing modules
-import { AppRoutingModule } from './shared/routing/app-routing.module';
 
 // App components
 import { AppComponent } from './app.component';
@@ -14,6 +13,14 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { MatToolbarModule} from  '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Firebase services + enviorment module
 import { AngularFireModule } from "@angular/fire";
@@ -23,6 +30,16 @@ import { environment } from '../environments/environment';
 
 // Auth service
 import { AuthService } from "./shared/services/auth.service";
+import { ProfileComponent } from './components/dashboard/profile/profile.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContractsComponent } from './components/contracts/contracts.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { AddNewContractComponent } from './components/add-new-contract/add-new-contract.component';
 
 
 @NgModule({
@@ -32,15 +49,32 @@ import { AuthService } from "./shared/services/auth.service";
     SignUpComponent,
     DashboardComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    ProfileComponent,
+    ContractsComponent,
+    AlertDialogComponent,
+    AddNewContractComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    ReactiveFormsModule
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatTableModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatPaginatorModule,
+    MatInputModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

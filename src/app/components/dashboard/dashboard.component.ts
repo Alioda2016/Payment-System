@@ -18,4 +18,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() { }
 
+  showContracts(){
+    this.router.navigate(['dashboard/contracts']);
+  }
 }

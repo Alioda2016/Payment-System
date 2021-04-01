@@ -1,0 +1,37 @@
+<h3 mat-dialog-title> :إنشاء عقد جديد</h3>
+<div class="container" style="direction: rtl;">
+  <form>
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="رقم العقد">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="مبلغ العقد">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="المقاول">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="الخصم">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="اسم العقد">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="تاريخ انتهاء العقد (المحطات)">
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div mat-dialog-actions class="actions-bar">
+  <button mat-flat-button color="primary"
+          (click)="addContract()">إنشاء
+  </button>
+  <button mat-flat-button color="warn" (click)="onNoClick()">إلغاء</button>
+</div>

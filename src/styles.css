@@ -283,8 +283,8 @@ input:-moz-placeholder {
 
 .nav-link {
   padding: 1.5rem 1rem;
-  border-bottom: 1px solid #dde0e2;
   cursor: pointer;
+  color: #023EC3;
 }
 
 .sidebar .nav-link.active,
@@ -670,3 +670,6 @@ body .table thead th {
   }
 
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

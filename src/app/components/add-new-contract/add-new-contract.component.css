@@ -1,0 +1,26 @@
+button:disabled{
+  cursor: not-allowed;
+  color: grey;
+}
+
+.actions-bar > button{
+  color: #ffffff;
+  background-color: #673ab7;
+}
+
+.item-label{
+  padding: 17px;
+}
+
+  div{
+    margin: 5px;
+  }
+
+  input{
+    font-size: medium;
+  }
+
+  h3{
+    color: #673ab7;
+    font-size: xx-large;
+  }

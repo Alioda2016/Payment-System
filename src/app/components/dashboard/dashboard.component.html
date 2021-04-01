@@ -1,86 +1,17 @@
-<!-- Top navigation -->
-<!-- <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0">
-    <img class="brand-logo" src="assets/logo.j">
-  </a>
-</nav> -->
-
-<div class="header_section">
-  <div class="container">
-      <div class="header_top">
-        <div class="float-right">
-          <a class="logo">
-            <img class="rs_retina" src="assets/images/logo.png">
-          </a>
-        </div>
-        <div class="clearfix"></div>
+<div class="container">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/accounts'"> الرئيسية </a>
+        <a mat-button (click)="showContracts()"> العقود</a>
+        <a mat-button (click)="authService.showProfile()"> المستخدم </a>
       </div>
-  </div>
-    <div id="sticky-wrapper" class="sticky-wrapper" style="height: 52px;">
-      <div class="main_menu_section">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="search_box d-sm-none">
-            <form action="/ar/search" method="get">
-              <i class="fas fa-search" aria-hidden="true"></i>
-               <input type="text" class="form-control" placeholder="بحث" id="query" name="query">
-            </form>
-          </div>
-          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#main_menu_wraper" aria-controls="main_menu_wraper" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="mdi mdi-menu"></span>
-          </button>
-        </nav>
+      <div>
+        <a mat-button (click)="authService.SignOut()"><mat-icon>logout</mat-icon></a>
       </div>
-    </div></div>
-    <div class="clearfix"></div>
+    </mat-toolbar-row>
+  </mat-toolbar>
 </div>
+<router-outlet></router-outlet>
 
-<!-- Sidebar navigation -->
-<div class="container-fluid">
-  <div class="row">
-
-    <nav class="col-md-2 d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active">
-              <i class="fas fa-user"></i>User Profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)="authService.SignOut()">
-              <i class="fas fa-sign-out-alt"></i>Log out
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Main content -->
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="inner-adjust">
-
-        <div class="pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">User Profile</h1>
-        </div>
-        <!-- Show user data when logged in -->
-        <div class="row" *ngIf="authService.userData as user">
-          <div class="col-md-12">
-            <div class="media">
-              <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
-                alt="{{user.displayName}}">
-              <div class="media-body">
-                <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
-                <p>User ID: <strong>{{user.uid}}</strong></p>
-                <p>Email: <strong>{{user.email}}</strong></p>
-                <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </main>
-
-  </div>
-</div>

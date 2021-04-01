@@ -1,1 +1,12 @@
+mat-toolbar{
+  direction: rtl;
+  align-items: center;
+}
 
+.float-left{
+  margin-top: 18px;
+}
+
+a{
+  font-size: larger;
+}
