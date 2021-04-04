@@ -11,7 +11,5 @@ export enum Messages {
 }
 
 export enum Titles {
-  delete_element = 'Delete Element',
-  Delete_Dimension = 'Delete Dimension',
-  edit_rate = 'Update Rate'
+  Delete_Contract = 'Delete Contract',
 }

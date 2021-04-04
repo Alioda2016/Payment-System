@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ContractPageComponent } from './components/contract-page/contract-page.component';
 import { ContractsComponent } from './components/contracts/contracts.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'register-user', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] ,children: [
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-    { path: 'contracts', component: ContractsComponent, canActivate: [AuthGuard]}
+    { path: 'contracts', component: ContractsComponent, canActivate: [AuthGuard]},
+    { path: 'contract-page/:id', component: ContractPageComponent, canActivate: [AuthGuard]}
   ]},
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },

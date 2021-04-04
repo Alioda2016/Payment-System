@@ -1,0 +1,25 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+  width: -webkit-fill-available;
+}
+
+mat-select{
+  direction: ltr;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+div{
+  margin: 5px;
+}
+
+input ~ mat-select{
+  font-size: larger;
+}
+

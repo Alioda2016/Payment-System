@@ -1,0 +1,86 @@
+<div class="container">
+  <mat-horizontal-stepper linear #stepper style="direction: rtl;">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" style="float: right; width: 100%;">
+        <ng-template matStepLabel> اختر طريقة دفع </ng-template>
+        <mat-form-field>
+          <mat-label>نوع الدفعة</mat-label>
+          <mat-select disableRipple formControlName="firstCtrl" required>
+            <mat-option value="1">شهادة استلام وقبول</mat-option>
+            <mat-option value="2">CIF شهادة</mat-option>
+            <mat-option value="3">شهادة نهائية</mat-option>
+            <mat-option value="4"> قطع غيار</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>التالي</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel> المعلومات  </ng-template>
+          <div class="form-row">
+            <div class="col">
+              <input type="text" disableRipple formControlName="secondCtrl" class="form-control" placeholder="مبلغ الدفعة">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input type="text" formControlName="thirdCtrl"class="form-control" placeholder="المبلغ بالأحرف">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input type="text" formControlName="fourthCtrl" class="form-control" placeholder="رقم الفاتورة">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input type="text" formControlName="fifthCtrl" class="form-control" placeholder="تأريخ الفاتورة">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <input type="text" formControlName="sixthCtrl" class="form-control" placeholder="المرفقات">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <textarea type="text" formControlName="seventhCtrl" class="form-control" placeholder="الملاحظات"></textarea>
+            </div>
+          </div>
+
+        <div>
+          <button mat-button matStepperPrevious>العودة</button>
+          <button mat-button matStepperNext>التالي</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup" style="float: right; width: 100%;">
+        <ng-template matStepLabel>  قائمة التدقيق </ng-template>
+        <mat-form-field>
+          <!-- <mat-label>نوع الدفعة</mat-label> -->
+          <mat-select disableRipple formControlName="eighthCtrl" required>
+            <mat-option value="1">شهادة استلام وقبول</mat-option>
+            <mat-option value="2">CIF شهادة</mat-option>
+            <mat-option value="3">شهادة نهائية</mat-option>
+            <mat-option value="4"> قطع غيار</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext color="primary">التالي</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>تم</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>العودة</button>
+        <button mat-button (click)="stepper.reset()">إعادة</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

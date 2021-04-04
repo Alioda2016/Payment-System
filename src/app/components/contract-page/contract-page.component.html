@@ -1,0 +1,257 @@
+<div class="container" >
+  <div>
+    <br>
+    <button (click)="openForm()"
+            mat-raised-button color="primary">إضافة دفعة جديدة
+    </button>
+  </div>
+
+  <div><h1>الاستلام والقبول</h1></div>
+<div >
+  <mat-table [dataSource]="dataSource" matSort style="direction: rtl;">
+    <ng-container matColumnDef="class">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>م.</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.class}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> رقم الشهادة</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sourceColumn">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> مبلغ الدفعة</mat-header-cell>
+
+      <mat-cell *matCellDef="let row">
+        {{row.sourceColumn}}
+
+      </mat-cell>
+    </ng-container>
+    <!---->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>الخصم</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.description}}
+      </mat-cell>
+    </ng-container>
+<!---->
+    <ng-container matColumnDef="individual">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>التأريخ</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.case}}
+      </mat-cell>
+    </ng-container>
+<!--    -->
+
+
+    <ng-container matColumnDef="organization">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>تم الإنشاء بواسطة</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{row.organization}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="case">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> الحالة</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button
+          mat-raised-button
+          color="warn"
+          *ngIf="disabled(row)"
+          (click)="changeActivity(row)">
+          ناقصة بعد
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          *ngIf="!disabled(row)"
+          (click)="changeActivity(row)">
+          تم الانتهاء
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="display">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> عرض</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button
+                (click)="displayElements(row)">
+          <mat-icon style="outline: outset;">play_arrow</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+</div >
+
+  <mat-paginator [pageSizeOptions]="[3, 5, 10, 15]" showFirstLastButtons = "true"></mat-paginator>
+
+  <div><h1>الشهادة النهائية</h1></div>
+  <div >
+    <mat-table [dataSource]="dataSource" matSort style="direction: rtl;">
+      <ng-container matColumnDef="class">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>م.</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.class}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> رقم الشهادة</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="sourceColumn">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> مبلغ الدفعة</mat-header-cell>
+
+        <mat-cell *matCellDef="let row">
+          {{row.sourceColumn}}
+
+        </mat-cell>
+      </ng-container>
+      <!---->
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>الخصم</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{row.description}}
+        </mat-cell>
+      </ng-container>
+  <!---->
+      <ng-container matColumnDef="individual">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>التأريخ</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{row.case}}
+        </mat-cell>
+      </ng-container>
+  <!--    -->
+
+
+      <ng-container matColumnDef="organization">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>تم الإنشاء بواسطة</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{row.organization}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="case">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> الحالة</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button
+            mat-raised-button
+            color="warn"
+            *ngIf="disabled(row)"
+            (click)="changeActivity(row)">
+            ناقصة بعد
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            *ngIf="!disabled(row)"
+            (click)="changeActivity(row)">
+            تم الانتهاء
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="display">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> عرض</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button
+                  (click)="displayElements(row)">
+            <mat-icon style="outline: outset;">play_arrow</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+  </div >
+
+    <mat-paginator [pageSizeOptions]="[3, 5, 10, 15]" showFirstLastButtons = "true"></mat-paginator>
+
+    <div><h1>قطع الغيار</h1></div>
+    <div >
+      <mat-table [dataSource]="dataSource" matSort style="direction: rtl;">
+        <ng-container matColumnDef="class">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>م.</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.class}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> رقم الشهادة</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="sourceColumn">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> مبلغ الدفعة</mat-header-cell>
+
+          <mat-cell *matCellDef="let row">
+            {{row.sourceColumn}}
+
+          </mat-cell>
+        </ng-container>
+        <!---->
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>الخصم</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{row.description}}
+          </mat-cell>
+        </ng-container>
+    <!---->
+        <ng-container matColumnDef="individual">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>التأريخ</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{row.case}}
+          </mat-cell>
+        </ng-container>
+    <!--    -->
+
+
+        <ng-container matColumnDef="organization">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>تم الإنشاء بواسطة</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            {{row.organization}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="case">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> الحالة</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button
+              mat-raised-button
+              color="warn"
+              *ngIf="disabled(row)"
+              (click)="changeActivity(row)">
+              ناقصة بعد
+            </button>
+            <button
+              mat-raised-button
+              color="primary"
+              *ngIf="!disabled(row)"
+              (click)="changeActivity(row)">
+              تم الانتهاء
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="display">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> عرض</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-icon-button
+                    (click)="displayElements(row)">
+              <mat-icon style="outline: outset;">play_arrow</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+    </div >
+
+      <mat-paginator [pageSizeOptions]="[3, 5, 10, 15]" showFirstLastButtons = "true"></mat-paginator>
+</div>
