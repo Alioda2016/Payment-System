@@ -1,12 +1,18 @@
 mat-toolbar{
   direction: rtl;
   align-items: center;
+  background: darkblue;
 }
 
 .float-left{
   margin-top: 18px;
 }
 
-a{
+button{
   font-size: larger;
 }
+
+.logout{
+  margin-right: 72.5%;
+}
+

@@ -3,6 +3,8 @@ import { User } from "../services/user";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { AlertService } from './alert.service';
+import { Messages, Titles } from '../Constant';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,7 @@ export class AuthService {
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
+    public alertService: AlertService,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
     /* Saving user data in localstorage when
@@ -116,10 +119,17 @@ export class AuthService {
 
   // Sign out
   SignOut() {
-    return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
-    })
+    this.alertService.confirm({title: Titles.Logout, content: Messages.Log_Out})
+     .subscribe((value: any) => {
+       const res = value;
+       if(res.confirm === true){
+        return this.afAuth.signOut().then(() => {
+          localStorage.removeItem('user');
+          this.router.navigate(['sign-in']);
+        })
+       }
+       return null;
+     });
   }
 
   showProfile(){

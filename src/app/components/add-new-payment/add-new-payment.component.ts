@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-new-payment',
@@ -14,8 +15,23 @@ export class AddNewPaymentComponent implements OnInit {
   isEditable = false;
   buttonDisabled: boolean = false;
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
+  // checkListElements: any[] = [
+  //   {"تم التدقيق من قبل المهندس": true},
+  //   {"تم التدقيق على المرفقات": false},
+  //   {"تم الفحص": true},
+  //   {"تم تزويد شهادة بلد المنشأ": false},
+  //   {"تم استلام المواد": false},
+  // ];
+  checkListElements: any[] = [
+    "تم التدقيق من قبل المهندس",
+    "تم التدقيق على المرفقات",
+    "تم الفحص",
+    "تم تزويد شهادة بلد المنشأ",
+    "تم استلام المواد",
+  ];
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder,public dialogRef: MatDialogRef<AddNewPaymentComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
 
   ngOnInit() {
@@ -35,6 +51,7 @@ export class AddNewPaymentComponent implements OnInit {
     });
   }
 
+  checkList = new FormControl();
 
   disabled(row: any) {
     this.buttonDisabled = row.enabled;
@@ -48,5 +65,11 @@ export class AddNewPaymentComponent implements OnInit {
       row.enabled = !row.enabled
     }
   }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  addPayment(){}
 
 }

@@ -6,14 +6,13 @@ export const environment = {
   production: false,
 
   firebase: {
-    apiKey: "AIzaSyBffsbGNlv-RuxdS8e1MT0e7y7tWlpICDY",
-    authDomain: "payment-system-82a40.firebaseapp.com",
-    databaseURL: "https://payment-system-82a40-default-rtdb.firebaseio.com",
-    projectId: "payment-system-82a40",
-    storageBucket: "payment-system-82a40.appspot.com",
-    messagingSenderId: "26225464524",
-    appId: "1:26225464524:web:51774a942f99e6f912de69",
-    measurementId: "G-4TD6SX1QQW"
+    apiKey: "AIzaSyCxf-KHhGW9NHB3jW75V9FP_HEmgoMH-ko",
+  authDomain: "payment-system-53ba6.firebaseapp.com",
+  projectId: "payment-system-53ba6",
+  storageBucket: "payment-system-53ba6.appspot.com",
+  messagingSenderId: "776284201095",
+  appId: "1:776284201095:web:adc6afc599eb22fc831822",
+  measurementId: "G-1EKBX84JGV"
   }
 };
 

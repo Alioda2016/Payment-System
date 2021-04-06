@@ -2,7 +2,9 @@
   <mat-horizontal-stepper linear #stepper style="direction: rtl;">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" style="float: right; width: 100%;">
-        <ng-template matStepLabel> اختر طريقة دفع </ng-template>
+        <ng-template matStepLabel>
+         <span class="step-header">  اختر طريقة دفع   </span>
+           </ng-template>
         <mat-form-field>
           <mat-label>نوع الدفعة</mat-label>
           <mat-select disableRipple formControlName="firstCtrl" required>
@@ -59,27 +61,36 @@
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup" style="float: right; width: 100%;">
-        <ng-template matStepLabel>  قائمة التدقيق </ng-template>
+        <ng-template matStepLabel>  قائمة التدقيق   </ng-template>
         <mat-form-field>
-          <!-- <mat-label>نوع الدفعة</mat-label> -->
-          <mat-select disableRipple formControlName="eighthCtrl" required>
-            <mat-option value="1">شهادة استلام وقبول</mat-option>
-            <mat-option value="2">CIF شهادة</mat-option>
-            <mat-option value="3">شهادة نهائية</mat-option>
-            <mat-option value="4"> قطع غيار</mat-option>
+          <mat-label>اختاركل ماتم التدقيق عليه</mat-label>
+          <mat-select [formControl]="checkList" multiple>
+            <mat-select-trigger>
+              {{checkList.value ? checkList.value[0] : ''}}
+              <span *ngIf="checkList.value?.length > 1" class="example-additional-selection">
+                (+{{checkList.value.length - 1}} {{checkList.value?.length === 2 ? 'other' : 'others'}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let option of checkListElements; let i =index" [value]="option">{{option}}</mat-option>
           </mat-select>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext color="primary">التالي</button>
+          <button mat-button matStepperNext>التالي</button>
         </div>
       </form>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>تم</ng-template>
-      <p>You are now done.</p>
+      <p> تم عملية الاعداد </p>
       <div>
         <button mat-button matStepperPrevious>العودة</button>
         <button mat-button (click)="stepper.reset()">إعادة</button>
+      </div>
+      <div mat-dialog-actions class="actions-bar">
+        <button mat-flat-button color="primary"
+                (click)="addPayment()">إنشاء
+        </button>
+        <button mat-flat-button color="warn" (click)="onNoClick()">إلغاء</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

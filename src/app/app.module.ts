@@ -46,6 +46,7 @@ import { AddNewPaymentComponent } from './components/add-new-payment/add-new-pay
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     AlertDialogComponent,
     AddNewContractComponent,
     ContractPageComponent,
-    AddNewPaymentComponent
+    AddNewPaymentComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

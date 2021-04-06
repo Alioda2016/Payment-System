@@ -19,7 +19,37 @@ div{
   margin: 5px;
 }
 
-input ~ mat-select{
+input {
+  font-size: larger;
+}
+
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+.mat-step-text-label{
+  font-size: x-large;
+  color: black;
+}
+
+
+.actions-bar > button{
+  color: #ffffff;
+  background-color: #673ab7;
+}
+
+button{
+  background-color: #002475;
+  color: white;
+  margin: 2px;
+}
+
+mat-horizontal-stepper{
+  font-size: large;
+}
+
+mat-step{
   font-size: larger;
 }
 

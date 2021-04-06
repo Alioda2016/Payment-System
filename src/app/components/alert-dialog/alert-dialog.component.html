@@ -1,9 +1,9 @@
 
 <div class="cotainer">
   <div class="card">
-    <div class="card-header">{{alertData.title}}</div>
+    <div class="card-header"><p>{{alertData.title}}</p></div>
     <div class="card-body">
-      <div>
+      <div >
         <p>
           {{alertData.content}}
         </p>
@@ -12,7 +12,7 @@
     <div class="card-footer">
       <div class="row float-right">
         <div class="col-auto">
-          <button type="submit" (click)="confirm()" class="btn btn-danger submit-button">Confirm</button>
+          <button type="submit" (click)="confirm()" class="btn btn-info submit-button">Confirm</button>
           <button type="button" (click)="cancel()" class="btn btn-info cancel-button">Cancel</button>
         </div>
       </div>

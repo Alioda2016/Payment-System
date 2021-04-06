@@ -1,17 +1,18 @@
-<div class="container">
+
   <mat-toolbar color="primary">
+    <!-- <div class="container"> -->
     <mat-toolbar-row>
       <span class="menu-spacer"></span>
       <div>
-        <a mat-button [routerLink]="'/accounts'"> الرئيسية </a>
-        <a mat-button (click)="showContracts()"> العقود</a>
-        <a mat-button (click)="authService.showProfile()"> المستخدم </a>
+        <button mat-button (click)="goHome()"> الرئيسية </button>
+        <button mat-button (click)="showContracts()"> العقود</button>
+        <button mat-button (click)="authService.showProfile()"> المستخدم </button>
       </div>
-      <div>
-        <a mat-button (click)="authService.SignOut()"><mat-icon>logout</mat-icon></a>
+      <div class="logout">
+        <button mat-button (click)="authService.SignOut()"><mat-icon>logout</mat-icon></button>
       </div>
     </mat-toolbar-row>
+    <!-- </div> -->
   </mat-toolbar>
-</div>
 <router-outlet></router-outlet>
 

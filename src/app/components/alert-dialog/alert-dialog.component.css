@@ -2,16 +2,24 @@
 
 button {
   margin: 5px;
+  display: table-caption;
 }
 
 .card-header{
   font-size: 20px;
   font-weight: bold;
   background: #ebebeb;
+  direction: rtl;
 }
 
 .card-footer {
   font-size: 20px;
   font-weight: bold;
   background: #ebebeb;
+  direction: ltr;
+}
+
+p{
+  float: right;
+  font-size: x-large;
 }

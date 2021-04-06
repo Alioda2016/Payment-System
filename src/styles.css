@@ -9,6 +9,11 @@
   box-sizing: border-box;
 }
 
+.mat-step-text-label{
+  font-size: large;
+  color: black;
+}
+
 html,
 body {
   margin: 0;
