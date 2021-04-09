@@ -12,12 +12,18 @@ button:disabled{
   padding: 17px;
 }
 
+.example-form-field {
+  margin-right: 20px;
+  width: -webkit-fill-available;
+  direction: initial;
+}
+
   div{
     margin: 5px;
   }
 
   input{
-    font-size: medium;
+    font-size: x-large;
   }
 
   h3{

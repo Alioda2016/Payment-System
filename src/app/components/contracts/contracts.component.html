@@ -16,19 +16,19 @@
 
     <ng-container matColumnDef="class">
       <mat-header-cell *matHeaderCellDef mat-sort-header>م.</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.class}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.contractClass}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> رقم العقد</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.contractNumber}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="sourceColumn">
       <mat-header-cell *matHeaderCellDef mat-sort-header> المقاول</mat-header-cell>
 
       <mat-cell *matCellDef="let row">
-        {{row.sourceColumn}}
+        {{row.contractor}}
 
       </mat-cell>
     </ng-container>
@@ -36,14 +36,14 @@
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef mat-sort-header>مبلغ العقد</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        {{row.description}}
+        {{row.contractValue}}
       </mat-cell>
     </ng-container>
 <!---->
     <ng-container matColumnDef="individual">
       <mat-header-cell *matHeaderCellDef mat-sort-header>الخصومات</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        {{row.individual}}
+        {{row.contractDiscount}}
       </mat-cell>
     </ng-container>
 <!--    -->
@@ -52,13 +52,13 @@
     <ng-container matColumnDef="organization">
       <mat-header-cell *matHeaderCellDef mat-sort-header>المتبقي</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        {{row.organization}}
+        {{row.remainingValue}}
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="weight">
       <mat-header-cell *matHeaderCellDef mat-sort-header> التأريخ</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.weight}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.contractEndDate | date}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="display">

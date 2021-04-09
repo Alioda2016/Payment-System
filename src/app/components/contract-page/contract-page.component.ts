@@ -72,14 +72,6 @@ export class ContractPageComponent implements OnInit {
     return this.buttonDisabled;
   }
 
-  changeActivity(row: any) {
-    if (row.enabled) {
-      row.enabled = !row.enabled
-    } else {
-      row.enabled = !row.enabled
-    }
-  }
-
   displayElements(row: Element) {
   }
 

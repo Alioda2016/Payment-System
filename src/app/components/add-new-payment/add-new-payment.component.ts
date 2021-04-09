@@ -11,7 +11,6 @@ export class AddNewPaymentComponent implements OnInit {
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
   isEditable = false;
   buttonDisabled: boolean = false;
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
@@ -36,18 +35,15 @@ export class AddNewPaymentComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['']
+      type: ['']
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: [''],
-      thirdCtrl: [''],
-      fourthCtrl: [''],
-      fifthCtrl: [''],
-      sixthCtrl: [''],
-      seventhCtrl: ['']
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      eighthCtrl: ['']
+      paymentValue: [''],
+      paymentValueInLetters: [''],
+      billNumber: [''],
+      billDate: [''],
+      attachments: [''],
+      notes: ['']
     });
   }
 
@@ -70,6 +66,12 @@ export class AddNewPaymentComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  addPayment(){}
+  addPayment(){
+    console.log("type: ", this.firstFormGroup.value);
+    console.log("information: ", this.secondFormGroup.value);
+    console.log("checked: ", this.checkList.value);
+
+    this.dialogRef.close();
+  }
 
 }

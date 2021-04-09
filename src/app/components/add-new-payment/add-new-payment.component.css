@@ -20,7 +20,7 @@ div{
 }
 
 input {
-  font-size: larger;
+  font-size: medium;
 }
 
 .example-additional-selection {
@@ -29,8 +29,14 @@ input {
 }
 
 .mat-step-text-label{
-  font-size: x-large;
+  font-size: large;
   color: black;
+}
+
+.example-form-field {
+  margin-right: 20px;
+  width: -webkit-fill-available;
+  direction: initial;
 }
 
 

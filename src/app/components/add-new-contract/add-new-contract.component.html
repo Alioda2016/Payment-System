@@ -1,28 +1,53 @@
 <h3 mat-dialog-title> :إنشاء عقد جديد</h3>
 <div class="container" style="direction: rtl;">
-  <form>
+  <form #contractForm="ngForm">
     <div class="row">
       <div class="col">
-        <input type="text" class="form-control" placeholder="رقم العقد">
+        <input type="number"
+          [(ngModel)]="contract.contractNumber"
+          name="contractNumber"
+          class="form-control"
+          placeholder="رقم العقد">
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="مبلغ العقد">
+        <input type="number"
+          [(ngModel)]="contract.contractValue"
+          class="form-control"
+          name="contractValue"
+          placeholder="مبلغ العقد">
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <input type="text" class="form-control" placeholder="المقاول">
+        <input type="text"
+          [(ngModel)]="contract.contractor"
+          name="contractor"
+          class="form-control"
+          placeholder="المقاول">
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="الخصم">
+        <input type="number"
+          [(ngModel)]="contract.contractDiscount"
+          name="contractDiscount"
+          class="form-control"
+          placeholder="الخصم">
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <input type="text" class="form-control" placeholder="اسم العقد">
+        <input type="text"
+          [(ngModel)]="contract.contractName"
+          name="contractName"
+          class="form-control"
+          placeholder="اسم العقد">
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="تاريخ انتهاء العقد (المحطات)">
+        <input type="date"
+          [(ngModel)]="contract.contractEndDate"
+          name="contractEndDate"
+          class="form-control"
+          placeholder="تاريخ انتهاء العقد (المحطات)"
+          >
       </div>
     </div>
   </form>
@@ -31,7 +56,8 @@
 
 <div mat-dialog-actions class="actions-bar">
   <button mat-flat-button color="primary"
-          (click)="addContract()">إنشاء
+          cdkFocusInitial [mat-dialog-close]="contractForm.value"
+          (click)="addContract(contractForm)">إنشاء
   </button>
   <button mat-flat-button color="warn" (click)="onNoClick()">إلغاء</button>
 </div>

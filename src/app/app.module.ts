@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 // Reactive Form
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
 // App routing modules
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 // App components
 import { AppComponent } from './app.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -22,7 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // Firebase services + enviorment module
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -47,6 +46,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HomeComponent } from './components/home/home.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { HomeComponent } from './components/home/home.component';
     AddNewContractComponent,
     ContractPageComponent,
     AddNewPaymentComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +88,11 @@ import { HomeComponent } from './components/home/home.component';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule, MatMomentDateModule,
+    NgbModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

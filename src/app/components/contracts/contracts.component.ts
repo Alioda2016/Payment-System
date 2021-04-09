@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -5,7 +6,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Contract } from 'src/app/shared/models/contract';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { ContractService } from 'src/app/shared/services/contract.service';
 import { AddNewContractComponent } from '../add-new-contract/add-new-contract.component';
 
 @Component({
@@ -22,16 +25,19 @@ export class ContractsComponent implements OnInit {
   type: boolean=false;
   dataSource = new MatTableDataSource<any>();
   buttonDisabled: boolean = false;
+  contractList: Contract[];
 
   constructor(public dialog: MatDialog,
     public router: ActivatedRoute,
     public route: Router,
-    public alertService: AlertService) {
+    public alertService: AlertService,
+    public contractService: ContractService) {
 
   }
 
   ngOnInit(): void {
-    this.dataSource.data = contracts;
+    this.getContracts();
+  //  this.dataSource.data = contracts;
   }
 
   ngAfterViewInit() {
@@ -50,8 +56,17 @@ export class ContractsComponent implements OnInit {
   }
 
   openForm() {
-    let emptycontract:any={description:'',id:0, weight: 0, sourceColumn: '', name:'',
-                                  enabled: false, individual: false, organization: false, elements:[]}
+    // let emptycontract:Contract={id:'', contractName: '', remainingValue: 0, contractClass: ''
+    //                           , contractValue: 0, contractEndDate: new Date(Date.now())
+    //                           , contractDiscount: 0
+    //                           , contractNumber: 0
+    //                           , contractor: ''
+    //                           ,CIFCertificatePayments: []
+    //                           ,sparePartsCertificatePayments: []
+    //                           ,finalCertificatePayments: []
+    //                           ,receiptAndAcceptanceCertificatePayments: []
+    //                         }
+    let emptycontract:Contract = new Contract();
     const dialogRef = this.dialog.open(AddNewContractComponent, {
       width: '1000px',
       data:{type:false, contractValue:emptycontract},
@@ -63,9 +78,21 @@ export class ContractsComponent implements OnInit {
         // let originalSource = this.dataSource.data
         // originalSource.push(result)
         // this.dataSource.data = originalSource
+        this.getContracts();
+        console.log("result", result);
+
       }
 
     });
+  }
+
+  getContracts(){
+    this.contractService.getContractList().subscribe((res: any) =>{
+      this.contractList = res
+      this.dataSource.data = this.contractList;
+      console.log("contracts: ", this.contractList);
+
+    })
   }
 
   disabled(row: any) {
@@ -73,7 +100,7 @@ export class ContractsComponent implements OnInit {
     return this.buttonDisabled;
   }
 
-  displayElements(row: Element) {
+  displayElements(row: Contract) {
 
 
     this.route.navigateByUrl(`/dashboard/contract-page/${row.id}`);
@@ -84,113 +111,140 @@ export class ContractsComponent implements OnInit {
   }
 }
 
-const contracts: any[] = [
+const contracts: Contract[] = [
   {
-    id: 0,
-    class: "O1",
-    name: "4435",
-    description: "1,523,550",
-    weight: "25-4-2020",
-    enabled: true,
-    sourceColumn: "شركة المقاولات الوطنية",
-    elements: [],
-    organization: "1,225,320",
-    individual: "36,620"
+    id: '',
+    contractClass: "O1",
+    contractNumber: 4435,
+    contractValue: 1523550,
+    contractEndDate: new Date(Date.now()),
+    contractor: "شركة المقاولات الوطنية",
+    receiptAndAcceptanceCertificatePayments: [],
+    finalCertificatePayments: [],
+    sparePartsCertificatePayments: [],
+    CIFCertificatePayments: [],
+    remainingValue: 345677,
+    contractDiscount: 36620,
+    contractName: ""
   },
   {
-    id: 1,
-    class: "O1",
-    name: "4435",
-    description: "1,523,550",
-    weight: "25-4-2020",
-    enabled: true,
-    sourceColumn: "شركة المقاولات الوطنية",
-    elements: [],
-    organization: "1,225,320",
-    individual: "36,620"
+    id: '',
+    contractClass: "O1",
+    contractNumber: 4435,
+    contractValue: 1523550,
+    contractEndDate: new Date(Date.now()),
+    contractor: "شركة المقاولات الوطنية",
+    receiptAndAcceptanceCertificatePayments: [],
+    finalCertificatePayments: [],
+    sparePartsCertificatePayments: [],
+    CIFCertificatePayments: [],
+    remainingValue: 345677,
+    contractDiscount: 36620,
+    contractName: ""
   },
   {
-    id: 2,
-    class: "O1",
-    name: "4435",
-    description: "1,523,550",
-    weight: "25-4-2020",
-    enabled: true,
-    sourceColumn: "شركة المقاولات الوطنية",
-    elements: [],
-    organization: "1,225,320",
-    individual: "36,620"
+    id: '',
+    contractClass: "O1",
+    contractNumber: 4435,
+    contractValue: 1523550,
+    contractEndDate: new Date(Date.now()),
+    contractor: "شركة المقاولات الوطنية",
+    receiptAndAcceptanceCertificatePayments: [],
+    finalCertificatePayments: [],
+    sparePartsCertificatePayments: [],
+    CIFCertificatePayments: [],
+    remainingValue: 345677,
+    contractDiscount: 36620,
+    contractName: ""
   },
   {
-    id: 3,
-    class: "O1",
-    name: "4435",
-    description: "1,523,550",
-    weight: "25-4-2020",
-    enabled: true,
-    sourceColumn: "شركة المقاولات الوطنية",
-    elements: [],
-    organization: "1,225,320",
-    individual: "36,620"
+    id: '',
+    contractClass: "O1",
+    contractNumber: 4435,
+    contractValue: 1523550,
+    contractEndDate: new Date(Date.now()),
+    contractor: "شركة المقاولات الوطنية",
+    receiptAndAcceptanceCertificatePayments: [],
+    finalCertificatePayments: [],
+    sparePartsCertificatePayments: [],
+    CIFCertificatePayments: [],
+    remainingValue: 345677,
+    contractDiscount: 36620,
+    contractName: ""
   },
   {
-    id: 4,
-    class: "O1",
-    name: "4435",
-    description: "1,523,550",
-    weight: "25-4-2020",
-    enabled: true,
-    sourceColumn: "شركة المقاولات الوطنية",
-    elements: [],
-    organization: "1,225,320",
-    individual: "36,620"
+    id: '',
+    contractClass: "O1",
+    contractNumber: 4435,
+    contractValue: 1523550,
+    contractEndDate: new Date(Date.now()),
+    contractor: "شركة المقاولات الوطنية",
+    receiptAndAcceptanceCertificatePayments: [],
+    finalCertificatePayments: [],
+    sparePartsCertificatePayments: [],
+    CIFCertificatePayments: [],
+    remainingValue: 345677,
+    contractDiscount: 36620,
+    contractName: ""
   },
   {
-    id: 5,
-    class: "O1",
-    name: "4435",
-    description: "1,523,550",
-    weight: "25-4-2020",
-    enabled: true,
-    sourceColumn: "شركة المقاولات الوطنية",
-    elements: [],
-    organization: "1,225,320",
-    individual: "36,620"
+    id: '',
+    contractClass: "O1",
+    contractNumber: 4435,
+    contractValue: 1523550,
+    contractEndDate: new Date(Date.now()),
+    contractor: "شركة المقاولات الوطنية",
+    receiptAndAcceptanceCertificatePayments: [],
+    finalCertificatePayments: [],
+    sparePartsCertificatePayments: [],
+    CIFCertificatePayments: [],
+    remainingValue: 345677,
+    contractDiscount: 36620,
+    contractName: ""
   },
   {
-    id: 6,
-    class: "O1",
-    name: "4435",
-    description: "1,523,550",
-    weight: "25-4-2020",
-    enabled: true,
-    sourceColumn: "شركة المقاولات الوطنية",
-    elements: [],
-    organization: "1,225,320",
-    individual: "36,620"
+    id: '',
+    contractClass: "O1",
+    contractNumber: 4435,
+    contractValue: 1523550,
+    contractEndDate: new Date(Date.now()),
+    contractor: "شركة المقاولات الوطنية",
+    receiptAndAcceptanceCertificatePayments: [],
+    finalCertificatePayments: [],
+    sparePartsCertificatePayments: [],
+    CIFCertificatePayments: [],
+    remainingValue: 345677,
+    contractDiscount: 36620,
+    contractName: ""
   },
   {
-    id: 7,
-    class: "O1",
-    name: "4435",
-    description: "1,523,550",
-    weight: "25-4-2020",
-    enabled: true,
-    sourceColumn: "شركة المقاولات الوطنية",
-    elements: [],
-    organization: "1,225,320",
-    individual: "36,620"
+    id: '',
+    contractClass: "O1",
+    contractNumber: 4435,
+    contractValue: 1523550,
+    contractEndDate: new Date(Date.now()),
+    contractor: "شركة المقاولات الوطنية",
+    receiptAndAcceptanceCertificatePayments: [],
+    finalCertificatePayments: [],
+    sparePartsCertificatePayments: [],
+    CIFCertificatePayments: [],
+    remainingValue: 345677,
+    contractDiscount: 36620,
+    contractName: ""
   },
   {
-    id: 8,
-    class: "O1",
-    name: "4435",
-    description: "1,523,550",
-    weight: "25-4-2020",
-    enabled: false,
-    sourceColumn: "شركة المقاولات الوطنية",
-    elements: [],
-    organization: "1,225,320",
-    individual: "36,620"
+    id: '',
+    contractClass: "O1",
+    contractNumber: 4435,
+    contractValue: 1523550,
+    contractEndDate: new Date(Date.now()),
+    contractor: "شركة المقاولات الوطنية",
+    receiptAndAcceptanceCertificatePayments: [],
+    finalCertificatePayments: [],
+    sparePartsCertificatePayments: [],
+    CIFCertificatePayments: [],
+    remainingValue: 0,
+    contractDiscount: 36620,
+    contractName: ""
   }
 ];
