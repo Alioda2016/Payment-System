@@ -4,26 +4,26 @@
     <button (click)="openForm()"
             mat-raised-button color="primary">إضافة دفعة جديدة
     </button>
-  </div>
+</div>
 
   <div><h1>الاستلام والقبول</h1></div>
 <div >
   <mat-table [dataSource]="dataSource" matSort style="direction: rtl;">
     <ng-container matColumnDef="class">
       <mat-header-cell *matHeaderCellDef mat-sort-header>م.</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.class}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.paymentClass}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> رقم الشهادة</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.certificateNumber}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="sourceColumn">
       <mat-header-cell *matHeaderCellDef mat-sort-header> مبلغ الدفعة</mat-header-cell>
 
       <mat-cell *matCellDef="let row">
-        {{row.sourceColumn}}
+        {{row.paymentValue}}
 
       </mat-cell>
     </ng-container>
@@ -31,14 +31,14 @@
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef mat-sort-header>الخصم</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        {{row.description}}
+        {{row.paymentDiscount}}
       </mat-cell>
     </ng-container>
 <!---->
     <ng-container matColumnDef="individual">
       <mat-header-cell *matHeaderCellDef mat-sort-header>التأريخ</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        {{row.case}}
+        {{row.billDate | date}}
       </mat-cell>
     </ng-container>
 <!--    -->
@@ -47,7 +47,7 @@
     <ng-container matColumnDef="organization">
       <mat-header-cell *matHeaderCellDef mat-sort-header>تم الإنشاء بواسطة</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        {{row.organization}}
+        {{row.createdBy}}
       </mat-cell>
     </ng-container>
 
@@ -57,14 +57,14 @@
         <button
           mat-raised-button
           color="warn"
-          *ngIf="disabled(row)"
+          *ngIf="row.status==false"
           >
           ناقصة بعد
         </button>
         <button
           mat-raised-button
           color="primary"
-          *ngIf="!disabled(row)"
+          *ngIf="row.status==true"
           >
           تم الانتهاء
         </button>
@@ -91,22 +91,22 @@
 
   <div><h1>الشهادة النهائية</h1></div>
   <div >
-    <mat-table [dataSource]="dataSource" matSort style="direction: rtl;">
+    <mat-table [dataSource]="dataSource1" matSort style="direction: rtl;">
       <ng-container matColumnDef="class">
         <mat-header-cell *matHeaderCellDef mat-sort-header>م.</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.class}} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{row.paymentClass}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header> رقم الشهادة</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{row.certificateNumber}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="sourceColumn">
         <mat-header-cell *matHeaderCellDef mat-sort-header> مبلغ الدفعة</mat-header-cell>
 
         <mat-cell *matCellDef="let row">
-          {{row.sourceColumn}}
+          {{row.paymentValue}}
 
         </mat-cell>
       </ng-container>
@@ -114,14 +114,14 @@
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef mat-sort-header>الخصم</mat-header-cell>
         <mat-cell *matCellDef="let row">
-          {{row.description}}
+          {{row.paymentDiscount}}
         </mat-cell>
       </ng-container>
   <!---->
       <ng-container matColumnDef="individual">
         <mat-header-cell *matHeaderCellDef mat-sort-header>التأريخ</mat-header-cell>
         <mat-cell *matCellDef="let row">
-          {{row.case}}
+          {{row.billDate | date}}
         </mat-cell>
       </ng-container>
   <!--    -->
@@ -130,7 +130,7 @@
       <ng-container matColumnDef="organization">
         <mat-header-cell *matHeaderCellDef mat-sort-header>تم الإنشاء بواسطة</mat-header-cell>
         <mat-cell *matCellDef="let row">
-          {{row.organization}}
+          {{row.createdBy}}
         </mat-cell>
       </ng-container>
 
@@ -140,14 +140,14 @@
           <button
             mat-raised-button
             color="warn"
-            *ngIf="disabled(row)"
+            *ngIf="row.status==false"
             >
             ناقصة بعد
           </button>
           <button
             mat-raised-button
             color="primary"
-            *ngIf="!disabled(row)"
+            *ngIf="row.status==true"
             >
             تم الانتهاء
           </button>
@@ -174,22 +174,22 @@
 
     <div><h1>قطع الغيار</h1></div>
     <div >
-      <mat-table [dataSource]="dataSource" matSort style="direction: rtl;">
+      <mat-table [dataSource]="dataSource2" matSort style="direction: rtl;">
         <ng-container matColumnDef="class">
           <mat-header-cell *matHeaderCellDef mat-sort-header>م.</mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.class}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.paymentClass}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef mat-sort-header> رقم الشهادة</mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.certificateNumber}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="sourceColumn">
           <mat-header-cell *matHeaderCellDef mat-sort-header> مبلغ الدفعة</mat-header-cell>
 
           <mat-cell *matCellDef="let row">
-            {{row.sourceColumn}}
+            {{row.paymentValue}}
 
           </mat-cell>
         </ng-container>
@@ -197,14 +197,14 @@
         <ng-container matColumnDef="description">
           <mat-header-cell *matHeaderCellDef mat-sort-header>الخصم</mat-header-cell>
           <mat-cell *matCellDef="let row">
-            {{row.description}}
+            {{row.paymentDiscount}}
           </mat-cell>
         </ng-container>
     <!---->
         <ng-container matColumnDef="individual">
           <mat-header-cell *matHeaderCellDef mat-sort-header>التأريخ</mat-header-cell>
           <mat-cell *matCellDef="let row">
-            {{row.case}}
+            {{row.billDate | date}}
           </mat-cell>
         </ng-container>
     <!--    -->
@@ -213,7 +213,7 @@
         <ng-container matColumnDef="organization">
           <mat-header-cell *matHeaderCellDef mat-sort-header>تم الإنشاء بواسطة</mat-header-cell>
           <mat-cell *matCellDef="let row">
-            {{row.organization}}
+            {{row.createdBy}}
           </mat-cell>
         </ng-container>
 
@@ -223,14 +223,14 @@
             <button
               mat-raised-button
               color="warn"
-              *ngIf="disabled(row)"
+              *ngIf="row.status==false"
               >
               ناقصة بعد
             </button>
             <button
               mat-raised-button
               color="primary"
-              *ngIf="!disabled(row)"
+              *ngIf="row.status==true"
               >
               تم الانتهاء
             </button>

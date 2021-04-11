@@ -1,11 +1,17 @@
 mat-toolbar{
   direction: rtl;
   align-items: center;
-  background: darkblue;
+  background: lightblue;
+  height: auto;
 }
 
 .float-left{
   margin-top: 18px;
+}
+
+mat-menu{
+  background: #002475;
+  color: white;
 }
 
 button{
@@ -13,6 +19,33 @@ button{
 }
 
 .logout{
-  margin-right: 72.5%;
+  margin-right: 78%;
 }
 
+.valign-center {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover, a:active {
+  color: lightgray;
+}
+
+.menu-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+mat-toolbar {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  z-index: 999;
+}

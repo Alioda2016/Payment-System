@@ -41,10 +41,10 @@ export class ContractService {
       contractDiscount: contract.contractDiscount,
       remainingValue: contract.remainingValue,
       contractEndDate: contract.contractEndDate,
-      sparePartsCertificatePayments: contract.sparePartsCertificatePayments || null,
-      CIFCertificatePayments: contract.CIFCertificatePayments || null,
-      finalCertificatePayments: contract.finalCertificatePayments || null,
-      receiptAndAcceptanceCertificatePayments: contract.receiptAndAcceptanceCertificatePayments || null
+      sparePartsCertificatePayments: contract.sparePartsCertificatePayments || [],
+      CIFCertificatePayments: contract.CIFCertificatePayments || [],
+      finalCertificatePayments: contract.finalCertificatePayments || [],
+      receiptAndAcceptanceCertificatePayments: contract.receiptAndAcceptanceCertificatePayments || []
     }
     return contractRef.set(contractData, {
       merge: true
@@ -52,18 +52,12 @@ export class ContractService {
   }
 
   deleteContract(contract: Contract){
-    return this.angularFirestore.collection('contract').doc(contract.id).delete();
+    return this.angularFirestore.collection('contracts').doc(contract.id).delete();
   }
 
   updateContract(contract: Contract, id: string){
-    return this.angularFirestore.collection('contract').doc(id).update({
-      contractNumber: contract.contractNumber,
-      contractValue: contract.contractValue,
-      contractor: contract.contractor,
-      contractDiscount: contract.contractDiscount,
-      contractName: contract.contractName,
-      contractEndDate: contract.contractEndDate,
-      remainingValue: contract.remainingValue
-    });
+    return this.angularFirestore.collection('contracts').doc(id).update(
+      contract
+    );
   }
 }

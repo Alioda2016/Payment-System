@@ -4,7 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Contract, Payment } from 'src/app/shared/models/contract';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { ContractService } from 'src/app/shared/services/contract.service';
 import { AddNewPaymentComponent } from '../add-new-payment/add-new-payment.component';
 
 @Component({
@@ -17,20 +19,41 @@ export class ContractPageComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   buttonDisabled: boolean = false;
-
+  contractId: string='';
+  contract: Contract;
   displayedColumns = ['class', 'name', 'sourceColumn', 'description', 'individual', 'organization', 'case', 'display'];
 
   type: boolean=false;
+  paymentList: Payment[];
   dataSource = new MatTableDataSource<any>();
+  dataSource1 = new MatTableDataSource<any>();
+  dataSource2 = new MatTableDataSource<any>();
+  list1:Payment[] = [];
+  list2:Payment[] = [];
+  list3:Payment[] = [];
   constructor(
     public dialog: MatDialog,
-    public router: ActivatedRoute,
-    public route: Router,
-    public alertService: AlertService
+    public route: ActivatedRoute,
+    public router: Router,
+    public alertService: AlertService,
+    public contractService: ContractService
   ) { }
 
   ngOnInit(): void {
-    this.dataSource.data = contracts;
+    this.route.paramMap.subscribe((params: any) => {
+      this.contractId = (params.get('id')||"");
+      console.info('contract id = ', this.contractId);
+      this.contractService.getContractDoc(this.contractId).subscribe((res:any) =>{
+        console.log("this.contract: ", res);
+        this.contract = res;
+        this.list1 = this.contract.receiptAndAcceptanceCertificatePayments;
+        this.dataSource.data = this.list1;
+        this.list2 = this.contract.finalCertificatePayments;
+        this.dataSource1.data=this.list2;
+        this.list3 = this.contract.sparePartsCertificatePayments;
+        this.dataSource2.data = this.list3;
+      });
+    });
   }
 
   ngAfterViewInit() {
@@ -49,11 +72,29 @@ export class ContractPageComponent implements OnInit {
   }
 
   openForm() {
-    let emptycontract:any={description:'',id:0, weight: 0, sourceColumn: '', name:'',
-                                  enabled: false, individual: false, organization: false, elements:[]}
+    let emptyPayment:Payment={
+      id: '',
+      type: '',
+      paymentClass: "O1",
+      certificateNumber: 0,
+      paymentDiscount: 0,
+      createdBy: '',
+      status: false,
+      paymentValue: 0,
+      paymentValueInLetters: '',
+      billNumber: 0,
+      billDate: new Date(Date.now()),
+      attachments: '',
+      notes: '',
+      checkedBySiteEngineer: false,
+      attachmentsHaveBeenChecked: false,
+      checked: false,
+      originCountryCertificateSupplied: false,
+      materialsHaveBeenReceived: false
+    }
     const dialogRef = this.dialog.open(AddNewPaymentComponent, {
       width: '1000px',
-      data:{type:false, contractValue:emptycontract},
+      data:{contract:this.contract, paymentValue:emptyPayment},
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -80,114 +121,26 @@ export class ContractPageComponent implements OnInit {
   }
 }
 
-const contracts: any[] = [
+const payments: Payment[] = [
   {
-    id: 0,
-    class: "O1",
-    name: "32015",
-    description: "36,620",
-    case: "25-4-2020",
-    enabled: true,
-    sourceColumn: "1,523,550",
-    elements: [],
-    organization: "م. حمد الشريدة",
-    individual: "36,620"
-  },
-  {
-    id: 1,
-    class: "O1",
-    name: "32015",
-    description: "36,620",
-    case: "25-4-2020",
-    enabled: true,
-    sourceColumn: "1,523,550",
-    elements: [],
-    organization: "م. حمد الشريدة",
-    individual: "36,620"
-  },
-  {
-    id: 2,
-    class: "O1",
-    name: "32015",
-    description: "36,620",
-    case: "25-4-2020",
-    enabled: true,
-    sourceColumn: "1,523,550",
-    elements: [],
-    organization: "م. حمد الشريدة",
-    individual: "36,620"
-  },
-  {
-    id: 3,
-    class: "O1",
-    name: "32015",
-    description: "36,620",
-    case: "25-4-2020",
-    enabled: true,
-    sourceColumn: "1,523,550",
-    elements: [],
-    organization: "م. حمد الشريدة",
-    individual: "36,620"
-  },
-  {
-    id: 4,
-    class: "O1",
-    name: "32015",
-    description: "36,620",
-    case: "25-4-2020",
-    enabled: true,
-    sourceColumn: "1,523,550",
-    elements: [],
-    organization: "م. حمد الشريدة",
-    individual: "36,620"
-  },
-  {
-    id: 5,
-    class: "O1",
-    name: "32015",
-    description: "36,620",
-    case: "25-4-2020",
-    enabled: true,
-    sourceColumn: "1,523,550",
-    elements: [],
-    organization: "م. حمد الشريدة",
-    individual: "36,620"
-  },
-  {
-    id: 6,
-    class: "O1",
-    name: "32015",
-    description: "36,620",
-    case: "25-4-2020",
-    enabled: true,
-    sourceColumn: "1,523,550",
-    elements: [],
-    organization: "م. حمد الشريدة",
-    individual: "36,620"
-  },
-  {
-    id: 7,
-    class: "O1",
-    name: "32015",
-    description: "36,620",
-    case: "25-4-2020",
-    enabled: true,
-    sourceColumn: "1,523,550",
-    elements: [],
-    organization: "م. حمد الشريدة",
-    individual: "36,620"
-  },
-  {
-    id: 8,
-    class: "O1",
-    name: "32015",
-    description: "36,620",
-    case: "25-4-2020",
-    enabled: false,
-    sourceColumn: "1,523,550",
-    elements: [],
-    organization: "م. حمد الشريدة",
-    individual: "36,620"
+    id: '',
+      type: '',
+      paymentClass: "O1",
+      certificateNumber: 0,
+      paymentDiscount: 0,
+      createdBy: '',
+      status: false,
+      paymentValue: 0,
+      paymentValueInLetters: '',
+      billNumber: 0,
+      billDate: new Date(Date.now()),
+      attachments: '',
+      notes: '',
+      checkedBySiteEngineer: false,
+      attachmentsHaveBeenChecked: false,
+      checked: false,
+      originCountryCertificateSupplied: false,
+      materialsHaveBeenReceived: false
   }
 ];
 

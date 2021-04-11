@@ -1,6 +1,5 @@
 
   <mat-toolbar color="primary">
-    <!-- <div class="container"> -->
     <mat-toolbar-row>
       <span class="menu-spacer"></span>
       <div>
@@ -12,7 +11,34 @@
         <button mat-button (click)="authService.SignOut()"><mat-icon>logout</mat-icon></button>
       </div>
     </mat-toolbar-row>
-    <!-- </div> -->
   </mat-toolbar>
 <router-outlet></router-outlet>
 
+<!--
+ <mat-toolbar class="mat-elevation-z10" fxLayout="row">
+  <div>
+    <a href="https://www.mew.gov.kw/" target="_blank">
+      <img src="https://www.mew.gov.kw/images/logo.png">
+    </a>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.xs>
+      <ul fxLayout fxLayoutGap="20px" class="menu-items">
+          <li> <button mat-menu-item (click)="goHome()"> الرئيسية </button></li>
+          <li><button mat-menu-item (click)="showContracts()"> العقود</button></li>
+          <li><button mat-menu-item (click)="authService.showProfile()"> المستخدم </button></li>
+          <li><button mat-menu-item (click)="authService.SignOut()"><mat-icon color="warn">logout</mat-icon></button></li>
+      </ul>
+  </div>
+  <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.gt-xs>
+      <a class="valign-center" mat-icon-button [matMenuTriggerFor]="menu" aria-label="additional links">
+          <mat-icon color="primary">menu</mat-icon>
+      </a>
+      <mat-menu #menu="matMenu" style="background: #002475; direction: rtl;">
+        <button mat-menu-item (click)="goHome()" style="color: white;"> الرئيسية </button>
+        <button mat-menu-item (click)="showContracts()" style="color: white;"> العقود</button>
+        <button mat-menu-item (click)="authService.showProfile()" style="color: white;"> المستخدم </button>
+        <button mat-menu-item (click)="authService.SignOut()"><mat-icon color="warn">logout</mat-icon></button>
+      </mat-menu>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet> -->

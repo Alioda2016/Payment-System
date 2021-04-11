@@ -21,7 +21,7 @@ export class Payment{
   certificateNumber: number;
   paymentDiscount: number;
   createdBy: string;
-  status: boolean;
+  status: boolean = false;
   paymentValue: number;
   paymentValueInLetters: string;
   billNumber: number;

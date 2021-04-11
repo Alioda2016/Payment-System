@@ -48,6 +48,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HomeComponent } from './components/home/home.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatMenuModule } from '@angular/material/menu';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
+    FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
@@ -92,6 +95,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatDatepickerModule,
     MatNativeDateModule, MatMomentDateModule,
     NgbModule,
+    MatMenuModule,
     BsDatepickerModule.forRoot()
   ],
   providers: [AuthService],

@@ -47,7 +47,7 @@ export class AddNewContractComponent implements OnInit {
 
   addContract(contractForm: NgForm){
     console.log("form: ",this.contract);
-     this.contract.remainingValue = contractForm.value.contractValue - contractForm.value.contractDiscount;
+     this.contract.remainingValue = contractForm.value.contractValue;
     // this.contract.contractNumber = contractForm.value.contractNumber;
     // this.contract.contractClass = contractForm.value.contractClass;
     // this.contract.contractor = contractForm.value.contractor;
