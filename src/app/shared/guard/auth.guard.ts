@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivateChild } from '@angular/router';
 import { AuthService } from "../../shared/services/auth.service";
 import { Observable } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild {
 
   constructor(
     public authService: AuthService,
@@ -17,10 +17,25 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if(!this.authService.isLoggedIn) {
-      this.router.navigate(['sign-in'])
-      return false;
-    }
+      console.log("inside canactivate: ", this.authService.isLoggedIn);
+    // if(!this.authService.isLoggedIn) {
+    //   alert('You are not allowed to view this page. You are redirected to login Page');
+    //   this.router.navigate(['sign-in'])
+    //   return false;
+    // }
+    return true;
+  }
+
+  canActivateChild(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+      console.log("inside canactivateChiled: ", this.authService.isLoggedIn);
+
+    // if(!this.authService.isLoggedIn) {
+    //   alert('You are not allowed to view this page. You are redirected to login Page');
+    //   this.router.navigate(['sign-in'])
+    //   return false;
+    // }
     return true;
   }
 

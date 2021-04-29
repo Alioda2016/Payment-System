@@ -21,8 +21,4 @@ export class DashboardComponent implements OnInit {
   showContracts(){
     this.router.navigate(['dashboard/contracts']);
   }
-
-  goHome(){
-    this.router.navigate(['dashboard/home']);
-  }
 }

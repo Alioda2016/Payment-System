@@ -39,6 +39,7 @@ export class AuthService {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result: any) => {
         this.ngZone.run(() => {
+          localStorage.setItem('user', JSON.stringify(this.userData));
           this.router.navigate(['dashboard']);
         });
         this.SetUserData(result.user);
@@ -81,9 +82,19 @@ export class AuthService {
   }
 
   // Returns true when user is looged in and email is verified
-  get isLoggedIn(): boolean {
+   get isLoggedIn(): any {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return (user !== null && user.emailVerified !== false) ? true : false;
+    console.log("user in local storage: ", user);
+
+    if(Object.keys(user).length === 0){
+      console.log("{}");
+
+      return false;
+    }else{
+      console.log("[]");
+      return (user !== null && user.emailVerified !== false) ? true : false;
+
+    }
   }
 
 
