@@ -1,7 +1,9 @@
-export interface User {
+export class User {
    uid: string;
    email: string;
-   displayName: string;
+   userType: string = "user";
+   auth : boolean = false;
+   displayName: string ="";
    photoURL: string;
    emailVerified: boolean;
 }

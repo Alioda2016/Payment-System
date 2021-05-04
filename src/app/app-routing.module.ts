@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
 import { ContractPageComponent } from './components/contract-page/contract-page.component';
 import { ContractsComponent } from './components/contracts/contracts.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -8,6 +9,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { AdminGuard } from './shared/admin.guard';
 import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
@@ -20,9 +22,10 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard], canActivateChild: [AuthGuard],
     children: [
-    { path: '', redirectTo: '/dashboard/contracts', pathMatch: 'full' },
+    { path: '', redirectTo: '/dashboard/profile', pathMatch: 'full' },
     { path: 'profile', component: ProfileComponent},
-    { path: 'contracts', component: ContractsComponent},
+    { path: 'contracts', component: ContractsComponent, canActivate: [AdminGuard]},
+    { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
     { path: 'contract-page/:id', component: ContractPageComponent}
   ]},
   { path: 'forgot-password', component: ForgotPasswordComponent },

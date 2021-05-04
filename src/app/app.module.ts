@@ -49,6 +49,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatMenuModule } from '@angular/material/menu';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AdminComponent } from './components/admin/admin.component';
+
 
 @NgModule({
   declarations: [
@@ -64,6 +66,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AddNewContractComponent,
     ContractPageComponent,
     AddNewPaymentComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

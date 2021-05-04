@@ -30,4 +30,13 @@ mat-header-row{
 
 button{
   font-size: larger;
+  margin: auto;
+}
+
+.btn-group{
+  margin: auto;
+}
+
+::ng-deep .customize {
+  background: blanchedalmond;
 }

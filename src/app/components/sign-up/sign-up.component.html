@@ -11,6 +11,10 @@
       <h3>Sign Up</h3>
 
       <div class="formGroup">
+        <input type="name" class="formControl" placeholder="Username" #userName required>
+      </div>
+
+      <div class="formGroup">
         <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
       </div>
 
@@ -19,7 +23,11 @@
       </div>
 
       <div class="formGroup">
-        <input type="button" class="btn btnPrimary" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">
+        <input type="section" class="formControl" placeholder="Section" #userType required>
+      </div>
+
+      <div class="formGroup">
+        <input type="button" class="btn btnPrimary" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value, userName.value, userType.value)">
       </div>
 <!--
       <div class="formGroup">

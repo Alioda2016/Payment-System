@@ -21,4 +21,8 @@ export class DashboardComponent implements OnInit {
   showContracts(){
     this.router.navigate(['dashboard/contracts']);
   }
+
+  showAdminPage(){
+    this.router.navigate(['dashboard/admin']);
+  }
 }
