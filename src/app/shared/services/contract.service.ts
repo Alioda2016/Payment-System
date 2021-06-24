@@ -17,6 +17,18 @@ export class ContractService {
     return this.angularFirestore.collection('contracts').valueChanges();
   }
 
+  orderByPercentage(){
+    return this.angularFirestore.collection(
+      'contracts', ref=> ref.orderBy("compPercentage", "desc")
+      ).valueChanges();
+  }
+
+  orderByDate(){
+    return this.angularFirestore.collection(
+      'contracts', ref=> ref.orderBy("contractEndDate", "desc")
+      ).valueChanges();
+  }
+
   createContract(contract: any){
     // return new Promise<any>((resolve: any, reject: any) => {
     //   this.angularFirestore
@@ -41,6 +53,7 @@ export class ContractService {
       contractDiscount: contract.contractDiscount,
       remainingValue: contract.remainingValue,
       contractEndDate: contract.contractEndDate,
+      compPercentage: contract.compPercentage|| 0,
       sparePartsCertificatePayments: contract.sparePartsCertificatePayments || [],
       CIFCertificatePayments: contract.CIFCertificatePayments || [],
       finalCertificatePayments: contract.finalCertificatePayments || [],

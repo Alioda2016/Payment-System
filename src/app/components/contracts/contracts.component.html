@@ -8,8 +8,8 @@
   <div class="btn-group sort-btn" style="padding: 5px;">
     <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">ترتيب بواسطة</button>
     <mat-menu #menu="matMenu" class="customize">
-      <button  mat-menu-item>التأريخ</button>
-      <button  mat-menu-item>نسبةالإنجاز</button>
+      <button  mat-menu-item (click)="orderByDate()">التأريخ</button>
+      <button  mat-menu-item (click)="orderByPercentage()">نسبةالإنجاز</button>
     </mat-menu>
 	</div>
   <!-- <div>
@@ -67,6 +67,11 @@
       <mat-cell *matCellDef="let row">
         {{row.remainingValue}}
       </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="compPercentage">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> نسبة الإنجاز</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.compPercentage}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="weight">

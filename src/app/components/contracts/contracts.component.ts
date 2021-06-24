@@ -18,7 +18,10 @@ import { AddNewContractComponent } from '../add-new-contract/add-new-contract.co
 })
 export class ContractsComponent implements OnInit {
 
-  displayedColumns = ['class', 'name', 'sourceColumn', 'description', 'individual', 'organization', 'weight', 'display'];
+  displayedColumns = [
+    'class', 'name', 'sourceColumn', 'description',
+    'individual', 'organization', 'compPercentage', 'weight', 'display'
+                      ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -104,6 +107,24 @@ export class ContractsComponent implements OnInit {
 
 
     this.route.navigateByUrl(`/dashboard/contract-page/${row.id}`);
+  }
+
+  orderByPercentage(){
+    this.contractService.orderByPercentage().subscribe((res: any) =>{
+      this.contractList = res
+      this.dataSource.data = this.contractList;
+      console.log("contracts: ", this.contractList);
+
+    })
+  }
+
+  orderByDate(){
+    this.contractService.orderByDate().subscribe((res: any) =>{
+      this.contractList = res
+      this.dataSource.data = this.contractList;
+      console.log("contracts: ", this.contractList);
+
+    })
   }
 
   changesourceColumn(event: any, row: any) {

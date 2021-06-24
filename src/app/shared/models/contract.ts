@@ -4,6 +4,7 @@ export class Contract{
   contractValue: number;
   contractor: string;
   contractDiscount: number ;
+  compPercentage: number;
   contractName: string;
   contractEndDate: Date;
   remainingValue: number;

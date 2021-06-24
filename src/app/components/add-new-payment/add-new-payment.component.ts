@@ -76,6 +76,7 @@ export class AddNewPaymentComponent implements OnInit {
     this.payment.createdBy = "م. حمد الشريدة";
     this.payment.paymentDiscount = 0;
     this.contract.remainingValue -= this.payment.paymentValue;
+    this.contract.compPercentage = ((this.contract.remainingValue/this.contract.contractValue)*100)
 
     let listCheck = this.checkList.value;
     if(listCheck != null){

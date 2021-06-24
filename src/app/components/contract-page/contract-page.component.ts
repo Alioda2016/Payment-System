@@ -4,10 +4,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Packer } from 'docx';
 import { Contract, Payment } from 'src/app/shared/models/contract';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { ContractService } from 'src/app/shared/services/contract.service';
 import { AddNewPaymentComponent } from '../add-new-payment/add-new-payment.component';
+import { DocumentCreator } from './doc-generator';
+import * as fs from 'file-saver';
+import * as fileSaver from 'file-saver';
 
 @Component({
   selector: 'app-contract-page',
@@ -21,7 +25,9 @@ export class ContractPageComponent implements OnInit {
   buttonDisabled: boolean = false;
   contractId: string='';
   contract: Contract;
-  displayedColumns = ['class', 'name', 'sourceColumn', 'description', 'individual', 'organization', 'case', 'display'];
+  displayedColumns = [
+    'class', 'name', 'sourceColumn', 'description', 'individual', 'organization', 'case', 'display'
+  ];
 
   type: boolean=false;
   paymentList: Payment[];
@@ -118,6 +124,17 @@ export class ContractPageComponent implements OnInit {
 
   changesourceColumn(event: any, row: any) {
     console.log(event)
+  }
+
+  downloadReport(row:Payment): void{
+    const documentCreator = new DocumentCreator();
+    const doc:any = documentCreator.create(row, this.contract);
+
+    Packer.toBlob(doc).then(blob => {
+      console.log(blob);
+      fs.saveAs(blob, "تقرير المهندس.docx");
+      console.log("Document created successfully");
+    });
   }
 }
 
